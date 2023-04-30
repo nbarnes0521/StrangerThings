@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import { registerUser } from '../ajax Request';
 
-function Register() {
+function Register({ setToken }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
 
 
-function handleSubmit(event){
+async function handleSubmit(event){
     event.preventDefault();
     const user = {username, password};
 
-    registerUser(user);
+    const results = await registerUser(user);
    // This is the submit button event
+   console.log(results)
 
+    if (results.success) {
+        setToken(results.data.token);
+    }
+    
 }
 
     return (

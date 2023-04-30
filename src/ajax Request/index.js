@@ -11,11 +11,8 @@ export const registerUser = async (user) => {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              user: {
-                username: 'superman27',
-                password: 'krypt0n0rbust'
-              }
-            })
+              user
+            }),
           });
           const result = await response.json();
     // You can log ▲▲▲ the result
