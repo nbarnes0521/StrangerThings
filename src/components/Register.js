@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
+import { registerUser } from '../ajax Request';
 
 function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-console.log(username, password)
+
+
+function handleSubmit(event){
+    event.preventDefault();
+    const user = {username, password};
+
+    registerUser(user);
+   // This is the submit button event
+
+}
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input
             type="text"
             placeholder='Enter Username'
