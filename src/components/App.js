@@ -4,25 +4,31 @@ import {
     Register,
     Posts
 } from './';
+import { fetchPosts } from '../ajax Request';
 
 function App() {
     const [token, setToken] = useState('');
+    const [posts, setPosts] = useState([]);
 
-    // function tokenCheck() {
-    //     if (window.localStorage.getItem('token')) {
-    //         setToken(window.localStorage.getItem('token'));
-    //     }
-    // }
+    function tokenCheck() {
+        if (window.localStorage.getItem('token')) {
+            setToken(window.localStorage.getItem('token'));
+        }
+    }
 
-    // useEffect(() => {
-    //     tokenCheck();
-    // }, [])
+    useEffect(() => {
+        tokenCheck();
+    }, [])
+
+    useEffect(() => {
+        setPosts(fetchPosts());
+    }, [token])
 
     return (
     <div>
         <Routes>
             <Route 
-                path=""
+                path="/"
                 element={<Posts />} 
             />
             <Route 
