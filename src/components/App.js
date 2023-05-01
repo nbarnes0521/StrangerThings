@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { 
     Register,
-    Posts
+    Posts,
 } from './';
+
+import Login from './Login';
+
 import { fetchPosts } from '../ajax Request';
 
 function App() {
@@ -17,7 +20,10 @@ function App() {
     }
 
 async function getPosts(){
-    setPosts(await fetchPosts());
+    const results = await fetchPosts();
+    if (results.success) {
+        setPosts(results.data.posts)
+    }
 }
 
     useEffect(() => {
@@ -28,16 +34,21 @@ async function getPosts(){
         getPosts();
     }, [token])
 
+
     return (
     <div>
         <Routes>
             <Route 
                 path="/"
-                element={<Posts />} 
+                element={<Posts posts={posts} />} 
             />
             <Route 
                 path="/register"
                 element={<Register setToken= {setToken} />}
+            />
+            <Route
+                path="/login"
+                element={<Login />}
             />
         </Routes> 
     </div>
