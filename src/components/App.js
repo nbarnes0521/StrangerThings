@@ -16,12 +16,16 @@ function App() {
         }
     }
 
+async function getPosts(){
+    setPosts(await fetchPosts());
+}
+
     useEffect(() => {
         tokenCheck();
     }, [])
 
     useEffect(() => {
-        setPosts(fetchPosts());
+        getPosts();
     }, [token])
 
     return (

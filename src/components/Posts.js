@@ -1,8 +1,19 @@
 import React from 'react';
 
-export default function Posts() {
+export default function Posts({ posts }) {
+    // console.log('from Posts component', posts)
+
     return (
-        <h1>POSTS !!!</h1>
-    )
+        <>
+            {
+            posts && posts.map((post) => {
+                    return (
+                    <p key={post._id}>{posts.title}</p>
+                    )
+                })
+            }
+        </>
+    );
 }
+            
 
