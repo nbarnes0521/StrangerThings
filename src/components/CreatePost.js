@@ -12,19 +12,19 @@ export default function CreatePost() {
                 type="text"
                 placeholder="Enter Title"
                 value={title}
-                onChange={() => {}} 
+                onChange={(event) => {setTitle(event.target.value)}} 
                 />
             <input
                 type="text"
                 placeholder="Description"
                 value={description}
-                onChange={() => {}} 
+                onChange={(event) => {setDescription(event.target.value)}} 
                 />
             <input
                 type="text"
                 placeholder="Enter Price"
                 value={price}
-                onChange={() => {}} 
+                onChange={(event) => {setPrice(event.target.value)}} 
                 />
         </form>
 
