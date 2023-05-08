@@ -5,9 +5,14 @@ export default function CreatePost() {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
 
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(title, description, price)
+    }
+
     return (
        
-        <form>
+        <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Enter Title"
@@ -26,6 +31,10 @@ export default function CreatePost() {
                 value={price}
                 onChange={(event) => {setPrice(event.target.value)}} 
                 />
+            <br></br>
+            <button type="submit">
+                Create Post
+            </button>
         </form>
 
     )
