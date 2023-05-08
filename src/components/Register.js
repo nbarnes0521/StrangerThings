@@ -13,16 +13,20 @@ async function handleSubmit(event){
 
     const results = await registerUser(user);
    // This is the submit button event
-   console.log(results)
+
 
     if (results.success) {
         setToken(results.data.token);
     }
-    
+
 }
 
     return (
         <form onSubmit={handleSubmit}>
+            <p>
+                Register Below
+            </p>
+            <br></br>
             <input
             type="text"
             placeholder='Enter Username'

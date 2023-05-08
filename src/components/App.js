@@ -3,11 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 import { 
     Register,
     Posts,
+
 } from './';
 
 import Login from './Login';
 
+import CreatePost from './CreatePost';
+
 import { fetchPosts } from '../ajax Request';
+
 
 function App() {
     const [token, setToken] = useState('');
@@ -34,7 +38,7 @@ async function getPosts(){
         getPosts();
     }, [token])
 
-
+// ROUTES =================================
     return (
     <div>
         <Routes>
@@ -48,7 +52,11 @@ async function getPosts(){
             />
             <Route
                 path="/login"
-                element={<Login />}
+                element={<Login setToken={setToken} />}
+            />
+            <Route
+                path="/create-post"
+                element={<CreatePost />}
             />
         </Routes> 
     </div>

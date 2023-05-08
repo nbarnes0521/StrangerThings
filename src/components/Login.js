@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { login } from '../ajax Request';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ async function handleSubmit(event){
     event.preventDefault();
     const user = {username, password};
 
-    const results = await registerUser(user);
+    const results = await login(user);
    // This is the submit button event
 
 
@@ -21,6 +22,10 @@ async function handleSubmit(event){
 
     return (
         <form onSubmit={handleSubmit}>
+            <p>
+                Login Here
+            </p>
+            <br></br>
             <input
             type="text"
             placeholder='Enter Username'

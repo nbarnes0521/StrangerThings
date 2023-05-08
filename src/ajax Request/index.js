@@ -24,7 +24,7 @@ export const registerUser = async (user) => {
         }
       };
 
-export const login = async () => {
+export const login = async (user) => {
 
     try {
       const response = await fetch(`${BASE_URL}/users/login`, {
@@ -33,11 +33,8 @@ export const login = async () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          user: {
-            username: 'superman27',
-            password: 'krypt0n0rbust'
-          }
-        })
+          user
+        }),
       });
       const result = await response.json();
       console.log(result);
