@@ -1,6 +1,5 @@
 const COHORT_NAME = '2301-ftb-et-web-pt'
-const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
-
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 export const registerUser = async (user) => {
         try {
@@ -59,7 +58,7 @@ export const fetchPosts = async () => {
       };
       
 
-export const makePost = async () => {
+export const makePost = async (post, token) => {
 
   try {
     const response = await fetch(`${BASE_URL}/posts`, {

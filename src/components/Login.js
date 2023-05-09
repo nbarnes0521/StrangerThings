@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { login } from '../ajax Request';
 
-function Login() {
+function Login({ setToken }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
