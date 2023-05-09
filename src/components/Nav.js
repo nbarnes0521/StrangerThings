@@ -11,7 +11,8 @@ export default function Nav({ setToken }) {
     return (
         <nav>
             <h1> Stranger Things !!</h1>
-            <Link to="/login">Login</Link>
+            <button><Link to="/login">Login</Link></button>
+            <button><Link to="/Register">Register</Link></button>
             <br></br>
             <button onClick={logout}> Logout </button>
         </nav>
