@@ -1,13 +1,22 @@
 import React, { useState } from "react";
+import { makePost } from "../ajax Request";
+import { Link } from 'react-router-dom';
 
-export default function CreatePost() {
+export default function CreatePost({ token }) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        console.log(title, description, price)
+        const post = {title, description, price}
+
+        const results = await makePost(post, token)
+
+        if (results.success) {
+
+
+        } 
     }
 
     return (
@@ -35,6 +44,7 @@ export default function CreatePost() {
             <button type="submit">
                 Create Post
             </button>
+            <Link to='/'> To Homepage</Link>
         </form>
 
     )

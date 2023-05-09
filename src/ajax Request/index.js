@@ -65,20 +65,15 @@ export const makePost = async (post, token) => {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        post: {
-          title: "My favorite stuffed animal",
-          description: "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
-          price: "$480.00",
-          willDeliver: true
-        }
+        post
       })
     });
     const result = await response.json();
-    console.log(result);
-    return result
+    // console.log(result);
+    return result;
   } catch (err) {
     console.error(err);
   }
