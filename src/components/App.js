@@ -43,7 +43,7 @@ async function getPosts() {
 // ROUTES =================================
     return (
     <div>
-        <Nav />
+        <Nav setToken={setToken} />
         <Routes>
             <Route 
                 path="/"
