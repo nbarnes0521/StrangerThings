@@ -45,13 +45,13 @@ export const login = async (user) => {
 
 // POST REQUESTS 
   
-export const fetchPosts = async () => {
+export const fetchPosts = async (token) => {
         try {
           const response = await fetch(`${BASE_URL}/posts`)
       
           const result = await response.json();
         //   console.log(result);
-          return result
+          return result;
         } catch (err) {
           console.error(err);
         }
@@ -59,17 +59,17 @@ export const fetchPosts = async () => {
       
 
 export const makePost = async (post, token) => {
-
+console.log(post, token)
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         post
-      })
+      }),
     });
     const result = await response.json();
     // console.log(result);

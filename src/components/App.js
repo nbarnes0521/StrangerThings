@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { 
-    Register,
-    Posts,
-
-} from './';
-
+import { Register } from './';
+import Posts from './Posts';
 import Login from './Login';
-
 import CreatePost from './CreatePost';
-
 import { fetchPosts } from '../ajax Request';
 
 
@@ -24,7 +18,7 @@ function App() {
     }
 
 async function getPosts() {
-    const results = await fetchPosts();
+    const results = await fetchPosts(token);
     if (results.success) {
         setPosts(results.data.posts)
     }
@@ -38,13 +32,17 @@ async function getPosts() {
         getPosts();
     }, [token])
 
+    function handlePostCreated(newPost) {
+        setPosts(prevPosts => [newPost, ...prevPosts]);
+    }
+
 // ROUTES =================================
     return (
     <div>
         <Routes>
             <Route 
                 path="/"
-                element={<Posts posts={posts} />} 
+                element={<Posts posts={posts} token={token} />} 
             />
             <Route 
                 path="/register"
@@ -56,7 +54,7 @@ async function getPosts() {
             />
             <Route
                 path="/create-post"
-                element={<CreatePost token={token}/>}
+                element={<CreatePost token={token} onPostCreated={handlePostCreated}/>}
             />
         </Routes> 
     </div>
