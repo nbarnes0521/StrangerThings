@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makePost } from "../ajax Request";
 import { Link } from 'react-router-dom';
 
-export default function CreatePost({ token }) {
+export default function CreatePost({ token, getPosts }) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -15,7 +15,8 @@ export default function CreatePost({ token }) {
 
         if (results.success) {
             
-
+            console.log(results)
+            getPosts();
         } 
     }
 

@@ -5,6 +5,10 @@ import Posts from './Posts';
 import Login from './Login';
 import CreatePost from './CreatePost';
 import { fetchPosts } from '../ajax Request';
+import { Nav } from './';
+
+
+
 
 
 function App() {
@@ -39,6 +43,7 @@ async function getPosts() {
 // ROUTES =================================
     return (
     <div>
+        <Nav />
         <Routes>
             <Route 
                 path="/"
@@ -54,7 +59,7 @@ async function getPosts() {
             />
             <Route
                 path="/create-post"
-                element={<CreatePost token={token} onPostCreated={handlePostCreated}/>}
+                element={<CreatePost token={token} getPosts={getPosts}/>}
             />
         </Routes> 
     </div>
