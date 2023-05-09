@@ -23,7 +23,7 @@ function App() {
         }
     }
 
-async function getPosts(){
+async function getPosts() {
     const results = await fetchPosts();
     if (results.success) {
         setPosts(results.data.posts)
@@ -56,7 +56,7 @@ async function getPosts(){
             />
             <Route
                 path="/create-post"
-                element={<CreatePost />}
+                element={<CreatePost token={token}/>}
             />
         </Routes> 
     </div>
