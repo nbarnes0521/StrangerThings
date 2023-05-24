@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 
-export default function Nav({ setToken }) {
+export default function Nav({ setToken, setIsLoggedIn }) {
     function logout() {
         setToken('');
+        setIsLoggedIn(false);
         window.localStorage.removeItem("token");
     }
     

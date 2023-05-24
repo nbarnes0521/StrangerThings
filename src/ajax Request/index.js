@@ -1,6 +1,8 @@
 const COHORT_NAME = '2301-ftb-et-web-pt'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
+
+// USER API REQUEST ///////
 export const registerUser = async (user) => {
         try {
           const response = await fetch(
@@ -43,13 +45,13 @@ export const login = async (user) => {
     }
   }
 
-  const myData = async () => {
+  export const myData = async () => {
 
     try {
       const response = await fetch(`${BASE_URL}/users/me`, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+          'Authorization': `Bearer ${token}`
         },
       });
       const result = await response.json();
@@ -60,7 +62,7 @@ export const login = async (user) => {
     }
   }
 
-// POST REQUESTS 
+// POST REQUESTS ROUTES ////////////////////
   
 export const fetchPosts = async (token) => {
         try {

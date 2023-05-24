@@ -4,7 +4,7 @@ import { Register } from './';
 import Posts from './Posts';
 import Login from './Login';
 import CreatePost from './CreatePost';
-import { fetchPosts } from '../ajax Request';
+import { fetchPosts, myData } from '../ajax Request';
 import { Nav } from './';
 
 
@@ -14,6 +14,8 @@ import { Nav } from './';
 function App() {
     const [token, setToken] = useState('');
     const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState({});
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     function tokenCheck() {
         if (window.localStorage.getItem('token')) {
@@ -22,10 +24,17 @@ function App() {
     }
 
 async function getPosts() {
-    const results = await fetchPosts(token);
+    const results = await fetchPosts();
     if (results.success) {
         setPosts(results.data.posts)
     }
+}
+
+async function getMyData() {
+   const results = await myData(token);
+   if (results.success) {
+        setUser(results.data);
+   }
 }
 
     useEffect(() => {
@@ -34,7 +43,17 @@ async function getPosts() {
 
     useEffect(() => {
         getPosts();
+        if (token) {
+            getMyData();
+            setIsLoggedIn(true);
+        }
     }, [token])
+
+    if (isLoggedIn) {
+        console.log("User is logged in");
+    } else {
+        console.log("User is logged out");
+    }
 
     function handlePostCreated(newPost) {
         setPosts(prevPosts => [newPost, ...prevPosts]);
@@ -43,7 +62,7 @@ async function getPosts() {
 // ROUTES =================================
     return (
     <div>
-        <Nav setToken={setToken} />
+        <Nav setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
             <Route 
                 path="/"
