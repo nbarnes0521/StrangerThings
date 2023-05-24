@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 
-export default function Nav({ setToken, setIsLoggedIn }) {
+export default function Nav({ setToken, setIsLoggedIn, isLoggedIn }) {
     function logout() {
         setToken('');
         setIsLoggedIn(false);
@@ -12,11 +12,29 @@ export default function Nav({ setToken, setIsLoggedIn }) {
     return (
         <nav>
             <h1> Stranger Things !!</h1>
-            <button><Link to="/login">Login</Link></button>
-            <button><Link to="/Register">Register</Link></button>
-            <br></br>
-            <button onClick={logout}> Logout </button>
+            {
+                isLoggedIn ? (
+                
+                <button onClick={logout}> Logout </button>
+                
+                
+                ) : (
+                    <>
+                    <p>
+                        Welcome
+                    </p>
+                    <button><Link to="/login">Login</Link></button>
+                    <button><Link to="/Register">Register</Link></button> 
+                    </>
+                )
+            }
         </nav>
     )
 }
 
+/* {
+    <button><Link to="/login">Login</Link></button>
+    <button><Link to="/Register">Register</Link></button>
+    <br></br>
+    <button onClick={logout}> Logout </button>
+    } */

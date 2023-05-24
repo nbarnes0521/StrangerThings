@@ -22,10 +22,6 @@ async function handleSubmit(event){
 
     return (
         <form onSubmit={handleSubmit}>
-            <p>
-                Login Here
-            </p>
-            <br></br>
             <input
             type="text"
             placeholder='Enter Username'

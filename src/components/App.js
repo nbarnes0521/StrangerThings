@@ -62,7 +62,7 @@ async function getMyData() {
 // ROUTES =================================
     return (
     <div>
-        <Nav setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+        <Nav setToken={setToken} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
         <Routes>
             <Route 
                 path="/"
