@@ -14,10 +14,11 @@ export default function Nav({ setToken, setIsLoggedIn, isLoggedIn }) {
             <h1> Stranger Things !!</h1>
             {
                 isLoggedIn ? (
-                
+                <>
+                    <button><Link to="/create-post">Create Post</Link></button>
                 <button onClick={logout}> Logout </button>
                 
-                
+                </>
                 ) : (
                     <>
                     <p>

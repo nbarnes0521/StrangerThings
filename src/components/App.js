@@ -24,7 +24,7 @@ function App() {
     }
 
 async function getPosts() {
-    const results = await fetchPosts();
+    const results = await fetchPosts(token);
     if (results.success) {
         setPosts(results.data.posts)
     }

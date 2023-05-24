@@ -66,7 +66,12 @@ export const login = async (user) => {
   
 export const fetchPosts = async (token) => {
         try {
-          const response = await fetch(`${BASE_URL}/posts`)
+          const response = await fetch(`${BASE_URL}/posts`, {
+            headers: {
+              'Content-Type': "application/json",
+              Authorization: 'Bearer ${token}'
+            }
+          });
       
           const result = await response.json();
         //   console.log(result);
