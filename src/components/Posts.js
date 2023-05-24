@@ -15,7 +15,11 @@ export default function Posts({ posts }) {
                                 <p>{post.title}</p>
                                 <button>Delete</button>
                                 </>
-                                ) : (   <p>{post.title}</p>
+                                ) : (   
+                                <>
+                                <p>{post.title}</p>
+                                <button>Message</button>
+                                </>        
                     )
                         }
                         </Fragment>

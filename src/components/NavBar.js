@@ -16,6 +16,7 @@ export default function Nav({ setToken, setIsLoggedIn, isLoggedIn }) {
                 isLoggedIn ? (
                 <>
                     <button><Link to="/create-post">Create Post</Link></button>
+                    <button><Link to="/">See All Post</Link></button>
                 <button onClick={logout}> Logout </button>
                 
                 </>

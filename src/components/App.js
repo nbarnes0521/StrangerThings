@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Register } from './';
 import Posts from './Posts';
 import Login from './Login';
@@ -16,6 +16,8 @@ function App() {
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const navigate = useNavigate();
 
     function tokenCheck() {
         if (window.localStorage.getItem('token')) {
@@ -59,6 +61,8 @@ async function getMyData() {
         setPosts(prevPosts => [newPost, ...prevPosts]);
     }
 
+
+
 // ROUTES =================================
     return (
     <div>
@@ -70,11 +74,11 @@ async function getMyData() {
             />
             <Route 
                 path="/register"
-                element={<Register setToken= {setToken} />}
+                element={<Register setToken= {setToken} navigate={navigate} />}
             />
             <Route
                 path="/login"
-                element={<Login setToken={setToken} />}
+                element={<Login setToken={setToken} navigate={navigate} />}
             />
             <Route
                 path="/create-post"
